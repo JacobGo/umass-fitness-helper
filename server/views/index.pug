@@ -1,0 +1,24 @@
+html  
+	head
+		title UMass Fitness Helper
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/style.css')
+		script(src='https://use.fontawesome.com/c4f10d98b2.js')
+		
+	body
+		div.container
+			div.header.clearfix
+				nav.navbar.navbar-light.bg-faded
+					a.navbar-brand
+						h3.text-muted.umass UMass Meal Chooser
+					h5.text-muted.umass by Jacob Goldman
+			div.jumbotron
+				h2 Generate a custom meal plan!
+				button.btn.btn-primary.btn-circle.btn-xl
+					i.fa.fa-pencil
+				hr
+				div.fillout.card-columns
+					each i in item
+						div.card
+							div.card-block
+								h5.card-title= i.name

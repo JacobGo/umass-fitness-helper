@@ -1,6 +1,9 @@
 $(document).ready(
     function(){
 
+    	// Fix for dynamic tab creation
+    	$("#breakfast_menu").addClass("active");
+
         $(".card").click(function () {
 			$('.card-info', this).toggle('fast');
 			$('.pin-card', this).toggle('fast');
@@ -30,3 +33,7 @@ $(document).ready(
 
 
     });
+
+function addToCart() {
+	
+}

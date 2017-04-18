@@ -1,19 +1,4 @@
-mixin card(i)
-	div.card
-		div.card-block
-			center
-				h5.card-title= i.name
-			p.card-info Serving Size: 
-				b=i.serving
-			div.card-info
-				ul.list-group.list-group-flush
-					li.list-group-item Calories: #{i.calories}
-					li.list-group-item Protein: #{i.protein}
-					li.list-group-item Fat: #{i.fat}
-					li.list-group-item Carbs: #{i.carbs}
-			button.btn.btn-success.btn-circle.btn-sm.pin-card
-				i.fa.fa-plus
-
+include includes/card.pug
 html  
 	head
 		title UMass Fitness Helper
@@ -21,6 +6,7 @@ html
 		link(rel='stylesheet', href='/css/style.css')
 		script(src='https://use.fontawesome.com/c4f10d98b2.js')
 		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
 		script(src='/js/script.js')
 
 	body
@@ -29,26 +15,35 @@ html
 				nav.navbar.navbar-light.bg-faded
 					a.navbar-brand
 						h3.text-muted.umass UMass Meal Chooser
-					h5.text-muted.umass by Dickweb Software
+					h5.text-muted.umass Worcester Dining Common
 			div.jumbotron
 				div.centered
 					h2 Generate a custom meal plan!
+				ul.nav.nav-tabs.meals-nav
+					each item, index in meals
+						- var fixedName = index
+						- fixedName = fixedName.replace("_menu","")
+						- fixedName = fixedName.charAt(0).toUpperCase() + fixedName.slice(1);
+						li.nav-item
+							a(class="nav-link" href="#"+index role="tab" data-toggle="tab") #{fixedName}
 				hr
-				div.fillout
-					div.row
-						div.col-md-4.icol
-							- for(var j = 0; j < Object.keys(item).length / 3; j++){
-								- var i = item[j]
-								+card(i)
-							- }
-						div.col-md-4.icol
-							- for(var j = Object.keys(item).length / 3; j < (2 * (Object.keys(item).length /3)); j++){
-								- var i = item[j]
-								+card(i)
-							- }
-						div.col-md-4.icol
-							- for(var j = (2 * (Object.keys(item).length / 3)); j < Object.keys(item).length; j++){
-								- var i = item[j]
-								+card(i)
-							- }
+				div.fillout.tab-content
+					each item, index in meals
+						div(role="tabpanel" class="tab-pane" id=index)
+							div.row
+								div.col-md-4.icol
+									- for(var j = 0; j < Math.floor(Object.keys(item).length / 3); j++){
+										- var i = item[j]
+										+card(i)
+									- }
+								div.col-md-4.icol
+									- for(var j = Math.floor(Object.keys(item).length / 3); j < (2 * (Math.floor(Object.keys(item).length /3))); j++){
+										- var i = item[j]
+										+card(i)
+									- }
+								div.col-md-4.icol
+									- for(var j = (2 * (Math.floor(Object.keys(item).length / 3))); j < Object.keys(item).length; j++){
+										- var i = item[j]
+										+card(i)
+									- }
 

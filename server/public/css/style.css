@@ -1,3 +1,13 @@
+.meals-nav{
+  background-color: #ECF0F1;
+}
+
+.nutrition-cart{
+  background-color: #ECF0F1;
+  margin-left: 15%;
+}
+
+
 .card:hover{
   border-color: rgb(52,152,219);
 }

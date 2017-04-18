@@ -1,6 +1,15 @@
-.card { 
+.card:hover{
+  border-color: rgb(52,152,219);
 }
 
+.card-info {
+  display:none;
+  background-color: white;
+}
+
+.centered{
+  text-align: center;
+}
 
 /* Space out content a bit */
 body {
@@ -49,7 +58,6 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   background-color: #2C3E50;
-  text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
 

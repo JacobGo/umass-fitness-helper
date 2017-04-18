@@ -4,7 +4,9 @@ html
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/style.css')
 		script(src='https://use.fontawesome.com/c4f10d98b2.js')
-		
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='/js/script.js')
+
 	body
 		div.container
 			div.header.clearfix
@@ -13,12 +15,22 @@ html
 						h3.text-muted.umass UMass Meal Chooser
 					h5.text-muted.umass by Jacob Goldman
 			div.jumbotron
-				h2 Generate a custom meal plan!
-				button.btn.btn-primary.btn-circle.btn-xl
-					i.fa.fa-pencil
+				div.centered
+					h2 Generate a custom meal plan!
+					button.btn.btn-primary.btn-circle.btn-xl
+						i.fa.fa-pencil
 				hr
 				div.fillout.card-columns
 					each i in item
 						div.card
 							div.card-block
-								h5.card-title= i.name
+								center
+									h5.card-title= i.name
+								p.card-info Serving Size: 
+									b=i.serving
+								div.card-info
+									ul.list-group.list-group-flush
+										li.list-group-item Calories: #{i.calories}
+										li.list-group-item Protein: #{i.protein}
+										li.list-group-item Fat: #{i.fat}
+										li.list-group-item Carbs: #{i.carbs}

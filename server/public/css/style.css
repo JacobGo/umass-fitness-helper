@@ -2,6 +2,32 @@
   border-color: rgb(52,152,219);
 }
 
+.card.selected{
+  border-color: green !important;
+}
+
+.pin-card{
+  z-index: 1000;
+  display: none;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+}
+
+.btn-circle.btn-sm{
+  width: 30px;
+  height: 30px;
+  padding: 3px 4px;
+  line-height: 1.33;
+  border-radius: 15px;
+}
+
+.card {
+    min-height: 100px !important;
+    position: relative;
+    vertical-align:top !important;
+}
+
 .card-info {
   display:none;
   background-color: white;
@@ -64,10 +90,7 @@ body {
 .jumbotron h2 {
   color: #ECF0F1;
 }
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 20px;
-}
+
 
 .navbar {
   text-align: center;

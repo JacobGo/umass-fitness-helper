@@ -102,7 +102,6 @@ function getChoices(menu, numOfItems){
 		items.item[i] = menu.meals.breakfast_menu[i]
 	}
 
-	console.log(items)
 	return items
 }
 

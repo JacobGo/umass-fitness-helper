@@ -13,12 +13,10 @@ html
 				nav.navbar.navbar-light.bg-faded
 					a.navbar-brand
 						h3.text-muted.umass UMass Meal Chooser
-					h5.text-muted.umass by Jacob Goldman
+					h5.text-muted.umass by Dickweb Software
 			div.jumbotron
 				div.centered
 					h2 Generate a custom meal plan!
-					button.btn.btn-primary.btn-circle.btn-xl
-						i.fa.fa-pencil
 				hr
 				div.fillout.card-columns
 					each i in item
@@ -34,3 +32,5 @@ html
 										li.list-group-item Protein: #{i.protein}
 										li.list-group-item Fat: #{i.fat}
 										li.list-group-item Carbs: #{i.carbs}
+								button.btn.btn-success.btn-circle.btn-sm.pin-card
+									i.fa.fa-plus

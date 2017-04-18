@@ -1,3 +1,19 @@
+mixin card(i)
+	div.card
+		div.card-block
+			center
+				h5.card-title= i.name
+			p.card-info Serving Size: 
+				b=i.serving
+			div.card-info
+				ul.list-group.list-group-flush
+					li.list-group-item Calories: #{i.calories}
+					li.list-group-item Protein: #{i.protein}
+					li.list-group-item Fat: #{i.fat}
+					li.list-group-item Carbs: #{i.carbs}
+			button.btn.btn-success.btn-circle.btn-sm.pin-card
+				i.fa.fa-plus
+
 html  
 	head
 		title UMass Fitness Helper
@@ -18,19 +34,21 @@ html
 				div.centered
 					h2 Generate a custom meal plan!
 				hr
-				div.fillout.card-columns
-					each i in item
-						div.card
-							div.card-block
-								center
-									h5.card-title= i.name
-								p.card-info Serving Size: 
-									b=i.serving
-								div.card-info
-									ul.list-group.list-group-flush
-										li.list-group-item Calories: #{i.calories}
-										li.list-group-item Protein: #{i.protein}
-										li.list-group-item Fat: #{i.fat}
-										li.list-group-item Carbs: #{i.carbs}
-								button.btn.btn-success.btn-circle.btn-sm.pin-card
-									i.fa.fa-plus
+				div.fillout
+					div.row
+						div.col-md-4.icol
+							- for(var j = 0; j < Object.keys(item).length / 3; j++){
+								- var i = item[j]
+								+card(i)
+							- }
+						div.col-md-4.icol
+							- for(var j = Object.keys(item).length / 3; j < (2 * (Object.keys(item).length /3)); j++){
+								- var i = item[j]
+								+card(i)
+							- }
+						div.col-md-4.icol
+							- for(var j = (2 * (Object.keys(item).length / 3)); j < Object.keys(item).length; j++){
+								- var i = item[j]
+								+card(i)
+							- }
+

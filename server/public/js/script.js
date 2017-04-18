@@ -2,8 +2,8 @@ $(document).ready(
     function(){
 
         $(".card").click(function () {
-			$('.card-info', this).toggle("fast");
-			$('.pin-card', this).toggle("fast");
+			$('.card-info', this).toggle('fast');
+			$('.pin-card', this).toggle('fast');
         });
         $(".pin-card").click(function (e) {
         	if ($(this).parent().parent().attr('class') === 'card selected'){
@@ -13,6 +13,7 @@ $(document).ready(
         		$(this).addClass("btn-success")
         		$(this).children('i').addClass('fa-plus')
 				$(this).children('i').removeClass('fa-minus')
+				// Add to Daily
         	}
         	else{
         		// Pin
@@ -26,5 +27,6 @@ $(document).ready(
         	e.stopPropagation();
 
         });
+
 
     });

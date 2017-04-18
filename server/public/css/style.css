@@ -3,7 +3,13 @@
 }
 
 .card.selected{
-  border-color: green !important;
+  border-color: rgb(92,184,92) !important;
+  border-width: 2px;
+}
+
+.fillout{
+  padding : 20px;
+  background-color: #ECF0F1;
 }
 
 .pin-card{
@@ -23,9 +29,9 @@
 }
 
 .card {
+    margin-bottom: 5px;
     min-height: 100px !important;
-    position: relative;
-    vertical-align:top !important;
+    display: flex;
 }
 
 .card-info {
@@ -74,7 +80,7 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 1000px;
+    max-width: 1200px;
   }
 }
 .container-narrow > hr {
@@ -96,10 +102,7 @@ body {
   text-align: center;
   background-color: #3498DB;
 }
-.fillout{
-  padding : 20px;
-  background-color: #ECF0F1;
-}
+
 .hr {
   background-color: #374D63;
 }

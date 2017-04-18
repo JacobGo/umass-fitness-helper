@@ -116,7 +116,7 @@ var path = __dirname + '/views/';
 
 router.get("/",function(req,res){
   updateMenu()
-  res.render('index', getChoices(currMenu, 20));
+  res.render('index', getChoices(currMenu, 21));
 });
 
 app.set('view engine', 'pug')

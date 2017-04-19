@@ -7,9 +7,13 @@ mixin card(i)
 				b=i.serving
 			div.card-info
 				ul.list-group.list-group-flush
-					li.list-group-item Calories: #{i.calories}
-					li.list-group-item Protein: #{i.protein}
-					li.list-group-item Fat: #{i.fat}
-					li.list-group-item Carbs: #{i.carbs}
+					li.list-group-item Calories:&nbsp
+						span #{i.calories}
+					li.list-group-item Protein:&nbsp
+						span #{i.protein}
+					li.list-group-item Fat:&nbsp
+						span #{i.fat}
+					li.list-group-item Carbs:&nbsp
+						span #{i.carbs}
 			button.btn.btn-success.btn-circle.btn-sm.pin-card
 				i.fa.fa-plus

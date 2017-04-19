@@ -2,11 +2,12 @@ include includes/card.pug
 html  
 	head
 		title UMass Fitness Helper
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/style.css')
 		script(src='https://use.fontawesome.com/c4f10d98b2.js')
 		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
-		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js")
 		script(src='/js/script.js')
 
 	body
@@ -14,36 +15,58 @@ html
 			div.header.clearfix
 				nav.navbar.navbar-light.bg-faded
 					a.navbar-brand
-						h3.text-muted.umass UMass Meal Chooser
-					h5.text-muted.umass Worcester Dining Common
-			div.jumbotron
-				div.centered
-					h2 Generate a custom meal plan!
-				ul.nav.nav-tabs.meals-nav
-					each item, index in meals
-						- var fixedName = index
-						- fixedName = fixedName.replace("_menu","")
-						- fixedName = fixedName.charAt(0).toUpperCase() + fixedName.slice(1);
-						li.nav-item
-							a(class="nav-link" href="#"+index role="tab" data-toggle="tab") #{fixedName}
-				hr
-				div.fillout.tab-content
-					each item, index in meals
-						div(role="tabpanel" class="tab-pane" id=index)
-							div.row
-								div.col-md-4.icol
-									- for(var j = 0; j < Math.floor(Object.keys(item).length / 3); j++){
-										- var i = item[j]
-										+card(i)
-									- }
-								div.col-md-4.icol
-									- for(var j = Math.floor(Object.keys(item).length / 3); j < (2 * (Math.floor(Object.keys(item).length /3))); j++){
-										- var i = item[j]
-										+card(i)
-									- }
-								div.col-md-4.icol
-									- for(var j = (2 * (Math.floor(Object.keys(item).length / 3))); j < Object.keys(item).length; j++){
-										- var i = item[j]
-										+card(i)
-									- }
+						h3.umass UMass Meal Chooser
+					h5.umass Worcester Dining Common
+			div.row
+				div.jumbotron.col-lg-9
+					nav.navbar.navbar-light.bg-faded.navbar-toggleable-md.meals-nav.justify-content-center
+						ul.nav.navbar-nav
+							each item, index in meals
+								- var fixedName = index
+								- fixedName = fixedName.replace("_menu","")
+								- fixedName = fixedName.charAt(0).toUpperCase() + fixedName.slice(1);
+								li.nav-item
+									a(class="nav-link" href="#"+index role="tab" data-toggle="tab") #{fixedName}
+
+					hr
+					div.fillout.tab-content
+						each item, index in meals
+							div(role="tabpanel" class="tab-pane" id=index)
+								div.row
+									div.col-md-4.icol
+										- for(var j = 0; j < Math.floor(Object.keys(item).length / 3); j++){
+											- var i = item[j]
+											+card(i)
+										- }
+									div.col-md-4.icol
+										- for(var j = Math.floor(Object.keys(item).length / 3); j < (2 * (Math.floor(Object.keys(item).length /3))); j++){
+											- var i = item[j]
+											+card(i)
+										- }
+									div.col-md-4.icol
+										- for(var j = (2 * (Math.floor(Object.keys(item).length / 3))); j < Object.keys(item).length; j++){
+											- var i = item[j]
+											+card(i)
+										- }
+				div.nutrition-cart.col-sm-3
+					h5.centered Cart
+					div.list
+						div#breakfast_menu
+							i.fa.fa-coffee
+						div#lunch_menu
+							i.fa.fa-sun-o
+						div#dinner_menu
+							i.fa.fa-cutlery
+						div#grabngo
+							i.fa.fa-shopping-bag
+						div#latenight_menu
+							i.fa.fa-moon-o
+					div.total
+						div.row.justify-content-center
+							p.col-lg-5#calories Calories: #[span 0]
+							p.col-lg-5#protein Protein: #[span 0]g
+						div.row.justify-content-center
+							p.col-lg-5#fat Fat: #[span 0]g
+							p.col-lg-5#carbs Carbs: #[span 0]g
+
 

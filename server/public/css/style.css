@@ -1,12 +1,148 @@
 .meals-nav{
   background-color: #ECF0F1;
 }
-
+.meals-nav .nav-item{
+}
 .nutrition-cart{
-  background-color: #ECF0F1;
-  margin-left: 15%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0; 
+  background-color: white;
+  z-index: 1000;
+  display: table;
 }
 
+.list > div{
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+.list i {
+  color: rgb(2,117,216);
+  margin-left: 47.5%;
+  margin-right: 50%;
+}
+.list > div:last-child{
+  border-bottom: 0;
+}
+
+.mobile-menu{
+  display:none;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: red;
+}
+
+.pin-card{
+  z-index: 1000;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    display: none;
+}
+
+.btn-circle.btn-sm{
+  width: 30px;
+  height: 30px;
+  padding: 3px 4px;
+  line-height: 1.33;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-item{
+    border-bottom: 1px solid;
+  }
+  .nav-item:last-child{
+    border: 0;
+  }
+  .container{
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    width: initial;
+  }
+  body{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .mobile-menu{
+    display: block; 
+  }
+
+  .jumbotron{
+    margin-bottom: 0px;
+  }
+
+  .pin-card{
+    display: block;
+  }
+    .btn-circle.btn-sm{
+    width: 50px;
+    height: 50px;
+    padding: 3px 4px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+  .card-title{
+    margin-right: 50px;
+  }
+  .nutrition-cart{
+    max-width: 100%;
+  }
+
+}
+
+.nutrition-cart h5{
+  padding-top: 10px;
+}
+.nutrition-cart.list{
+  display: table-row;
+}
+
+.cart-item{
+  font-size: 80%;
+  margin-bottom: 10px;
+}
+
+.list {
+  margin-bottom: 10px;
+  max-height: 66vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.total {
+  font-size: 70%;
+  border-top-style: solid;
+  margin-left: 25px;
+  margin-right: 25px;
+
+}
+
+.total .row {
+}
+
+
+
+
+.total p {
+  padding: 0;
+  margin: 6px;
+}
+
+.cart-item-info .detail{
+  margin: 0px;
+}
+
+.cart-item h6{
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.row {
+  margin: 0px;
+}
 
 .card:hover{
   border-color: rgb(52,152,219);
@@ -22,21 +158,6 @@
   background-color: #ECF0F1;
 }
 
-.pin-card{
-  z-index: 1000;
-  display: none;
-    top: 5px;
-    right: 5px;
-    position: absolute;
-}
-
-.btn-circle.btn-sm{
-  width: 30px;
-  height: 30px;
-  padding: 3px 4px;
-  line-height: 1.33;
-  border-radius: 15px;
-}
 
 .card {
     margin-bottom: 5px;
@@ -55,23 +176,13 @@
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
   background-color: #ECF0F1;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
-}
 
 /* Custom page header */
 .header {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -86,39 +197,38 @@ body {
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
-
-/* Customize container */
-@media (min-width: 768px) {
   .container {
-    max-width: 1200px;
+    max-width: 1350px;
   }
-}
+
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  border-radius: 0px;
   background-color: #2C3E50;
   border-bottom: 1px solid #e5e5e5;
+  padding-top: 20px;
+  margin-bottom: 0px;
 }
 
-.jumbotron h2 {
+.jumbotron h3 {
   color: #ECF0F1;
 }
 
 
-.navbar {
+.header .navbar {
   text-align: center;
-  background-color: #3498DB;
+  background-color: white;
+  color: black !important;
 }
 
 .hr {
   background-color: #374D63;
 }
-.umass {
-  color : #ECF0F1 !important;
-}
+
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -164,10 +274,9 @@ body {
     padding-right: 0;
     padding-left: 0;
   }
+
   /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;

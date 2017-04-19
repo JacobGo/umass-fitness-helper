@@ -109,6 +109,7 @@ $(document).ready(
 	    	   $('.nutrition-cart').animate({
 	    			top : "0"
 	    		})
+
         	    $('body').css('overflow', 'hidden')
         	}
         	else {

@@ -12,21 +12,6 @@ var fs = require('fs');
 // currMenu is a JSON representation of the UMass Dining Commons menu for Worcester DC
 var currMenu;
 
-// Below crawls the live website, replace UMASSMENU with the url to the menu.
-/*
-request('UMASSMENU', function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var $ = cheerio.load(body);
-    $('p').each(function (index, el) {
-      console.log($(this).text());
-    });
-  }
-  else {
-  	console.log(error);
-  }
-});
-*/
-
 function crawlData(){
 	// Add the date so we can check it later.
 	var d = new Date()
@@ -37,8 +22,16 @@ function crawlData(){
 		"meals" : {}
 	};
 
-	// Initialize the jQuery representation of the page, currently pointed locally.
-	var $ = cheerio.load(fs.readFileSync('./menu.htm'));
+	// Initialize the jQuery representation of the page
+	request('http://umassdining.com/locations-menus/worcester/menu', function (error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	    var $ = cheerio.load(body);
+	    continueCrawling($, menu)
+	  }
+	  else {
+	  	console.log(error);
+	  }
+	});
 
 	// Uses DOM elements to gather menu information.
 	/* Creates a JSON object matching the following:
@@ -55,25 +48,28 @@ function crawlData(){
 			        },
 			        ...
 	*/
-	$('.panel-container').children('div').each(function (indexMeal, meal){
-		var mealName = $(meal).attr('id')
-		menu.meals[mealName] = {}
-		$(meal).children('div').children('.lightbox-nutrition').children('a').each(function (indexDish, dish) {
-			var dishName = indexDish
-			menu.meals[mealName][dishName] = {}
-			menu.meals[mealName][dishName].name = $(dish).attr('data-dish-name')
-			menu.meals[mealName][dishName].serving = $(dish).attr('data-serving-size')
-			menu.meals[mealName][dishName].calories = $(dish).attr('data-calories');
-			menu.meals[mealName][dishName].fat = $(dish).attr('data-total-fat');
-			menu.meals[mealName][dishName].protein = $(dish).attr('data-protein');
-			menu.meals[mealName][dishName].carbs = $(dish).attr('data-total-carb');
-		});
-	});
-
-	currMenu = menu;
-	writeToFile(menu);
 
 };
+
+function continueCrawling($, menu){
+	$('.panel-container').children('div').each(function (indexMeal, meal){
+			var mealName = $(meal).attr('id')
+			menu.meals[mealName] = {}
+			$(meal).children('div').children('.lightbox-nutrition').children('a').each(function (indexDish, dish) {
+				var dishName = indexDish
+				menu.meals[mealName][dishName] = {}
+				menu.meals[mealName][dishName].name = $(dish).attr('data-dish-name')
+				menu.meals[mealName][dishName].serving = $(dish).attr('data-serving-size')
+				menu.meals[mealName][dishName].calories = $(dish).attr('data-calories');
+				menu.meals[mealName][dishName].fat = $(dish).attr('data-total-fat');
+				menu.meals[mealName][dishName].protein = $(dish).attr('data-protein');
+				menu.meals[mealName][dishName].carbs = $(dish).attr('data-total-carb');
+			});
+		});
+
+		currMenu = menu;
+		writeToFile(menu);
+}
 
 function writeToFile(menu){
 	json = JSON.stringify(menu)

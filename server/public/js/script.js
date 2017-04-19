@@ -76,6 +76,30 @@ $(document).ready(
         	e.stopPropagation();
 
         });
+        var flag = false
+
+        $(".ball").click(function (){
+        	var c = $('.nutrition-cart')
+
+        	if(Math.floor(parseFloat($(c).css("top"))) === $(c).height()){
+        	    if (!flag){
+        	    	$('.list').animate({scrollTop:0},500)
+        	    	flag = true
+        	    }
+
+	    	   $('.nutrition-cart').animate({
+	    			top : "0"
+	    		})
+        	    $('body').css('overflow', 'hidden')
+        	}
+        	else {
+        		$('.nutrition-cart').animate({
+        			top : "100%"
+        		})
+        	    $('body').css('overflow', 'scroll')
+        	}
+
+        })
 
 
     });
@@ -111,10 +135,10 @@ function addToCart(item) {
 	if (a!=undefined)
 		$('.list').scrollTo($(a))
 	updateTotals()
-
 }
 
 function updateTotals(){
+	var i = 0
 	$(".total").find("p").each(function(index, value){
 		var role = $(this).attr('id')
 		$(this).find("span").text(totals[role])
@@ -125,7 +149,12 @@ function updateTotals(){
 		}
 		else
 			$(this).find("span").css("color", "black")
+		i++
 	})
+	if ($(".cart-item").length != 0)
+		$(".ball span").text($(".cart-item").length)
+	else
+		$(".ball span").empty()
 }
 
 

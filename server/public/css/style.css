@@ -11,18 +11,26 @@
   z-index: 1000;
   display: table;
 }
+.stick{
+  display:block;
+  height:40px;
+  width:250px;
+  background:rgb(2,117,216);
+  position:relative;
+  margin-top:40px;
+  border-top-left-radius:20px;
+  border-top-right-radius:20px;
+}
 
-.list > div{
-  padding-bottom: 5px;
-  margin-top: 5px;
+.ball span {
 }
-.list i {
-  color: rgb(2,117,216);
-  margin-left: 47.5%;
-  margin-right: 50%;
-}
-.list > div:last-child{
-  border-bottom: 0;
+.ball{
+  position:absolute;
+  border:3px solid white !important;
+  left:50%;
+  margin-left:-7.5%;
+  z-index: 1000;
+  pointer-events: all !important;
 }
 
 .mobile-menu{
@@ -31,7 +39,23 @@
   bottom: 0;
   z-index: 1000;
   width: 100%;
-  background-color: red;
+  pointer-events: none;
+}
+
+.list > div{
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+.list i {
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  color: rgb(2,117,216);
+  margin-left: 47.5%;
+  margin-right: 50%;
+}
+.list > div:last-child{
+  border-bottom: 0;
 }
 
 .pin-card{
@@ -49,6 +73,15 @@
   line-height: 1.33;
   border-radius: 15px;
 }
+.card {
+    margin-bottom: 5px;
+    min-height: 125px;
+    display: flex;
+}
+
+  .card-title{
+    font-size: 16px;
+  }
 
 @media screen and (max-width: 767px) {
   .nav-item{
@@ -62,18 +95,30 @@
     margin: 0px;
     position: relative;
     width: initial;
+    overflow: hidden;
   }
   body{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
   }
-
+  .list i {
+      margin-left: 10%;
+    margin-right: 0;
+  }
+  .cart-item {
+    margin-left: 12%;
+  }
   .mobile-menu{
     display: block; 
+
   }
 
   .jumbotron{
     margin-bottom: 0px;
+  }
+
+  .card{
+    min-height: 60px;
   }
 
   .pin-card{
@@ -90,8 +135,20 @@
     margin-right: 50px;
   }
   .nutrition-cart{
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+    top: 100%;
     max-width: 100%;
   }
+
+  .btn-sm.ball{
+  width: 80px;
+  height: 80px;
+  padding: 3px 4px;
+  line-height: 1.33;
+  border-radius: 40px;
+}
 
 }
 
@@ -159,15 +216,16 @@
 }
 
 
-.card {
-    margin-bottom: 5px;
-    min-height: 100px !important;
-    display: flex;
-}
+
 
 .card-info {
   display:none;
   background-color: white;
+  font-size: 12px;
+}
+
+.card-info *{
+  padding: 0px;
 }
 
 .centered{
@@ -189,6 +247,9 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
+}
+.header h5{
+  color: rgb(2,117,216);
 }
 
 /* Custom page footer */
@@ -255,15 +316,6 @@ body {
   border-radius: 30px;
 }
 
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited,
-.btn-primary:focus {
-    color: #ECF0F1;
-    background-color: #E74C3C;
-    border-color: #E74C3C;
-}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

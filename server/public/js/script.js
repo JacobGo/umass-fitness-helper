@@ -21,7 +21,6 @@ jQuery.fn.scrollTo = function(elem, speed) {
 
 $(document).ready(
     function(){
-
     	// Fix for dynamic tab creation
     	$("#breakfast_menu").addClass("active in");
     	$(".jumbotron li.nav-item:first-child").addClass("active")
@@ -30,6 +29,25 @@ $(document).ready(
 			$('.card-info', this).toggle('fast');
         });
 
+        
+        if ($( window ).width() < 768){
+        	$(".nutrition-cart").insertAfter($(".nutrition-cart").parent())
+        }
+        		
+
+        $(window).resize(function(){
+        	if ($( window ).width() < 768){
+        		if($(".nutrition-cart").parent().attr("class") == "container")
+        		{}
+        		else{
+        			$(".nutrition-cart").insertAfter($(".nutrition-cart").parent())
+        		}
+        	}
+        	else{
+        		$(".nutrition-cart").insertAfter(".jumbotron")
+        	}
+        })
+		
         $(".card").hover(function () {
         	var isMobile = $( window ).width() < 767;
         	if (!isMobile)
@@ -38,7 +56,6 @@ $(document).ready(
 				$('.pin-card', this).show('slow');
 
         });
-
 
         $(".pin-card").click(function (e) {
         	if ($(this).parent().parent().attr('class') === 'card selected'){
@@ -80,8 +97,10 @@ $(document).ready(
 
         $(".ball").click(function (){
         	var c = $('.nutrition-cart')
+  			console.log(Math.floor(parseFloat($(c).css("top"))))
+        	console.log($(c).height())
+        	if(Math.floor(parseFloat($(c).css("top"))) <= ($(c).height() + 200) && Math.floor(parseFloat($(c).css("top"))) >= ($(c).height() - 200)){
 
-        	if(Math.floor(parseFloat($(c).css("top"))) === $(c).height()){
         	    if (!flag){
         	    	$('.list').animate({scrollTop:0},500)
         	    	flag = true
